@@ -21,6 +21,7 @@ export class DogViewerComponent {
     this.loading.set(true);
     this.dogService.getRandomDog().subscribe({
       next: res => {
+        console.log('Dog image URL:', res.message);
         this.dogImage.set(res.message);
         this.loading.set(false);
       },
