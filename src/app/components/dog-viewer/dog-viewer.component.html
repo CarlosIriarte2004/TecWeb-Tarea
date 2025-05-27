@@ -1,8 +1,8 @@
 <div class="card">
   <h2>Imagen aleatoria de perro</h2>
-  <button (click)="loadDog()" [disabled]="loading()">Cambiar perro</button>
 
   <!-- <div *ngIf="loading()" class="loading">Cargando imagen...</div> -->
 
   <img *ngIf="!loading()" [src]="dogImage()" alt="Perro" class="dog-img" />
+  <button (click)="loadDog()" [disabled]="loading()">Cambiar perro</button>
 </div>
