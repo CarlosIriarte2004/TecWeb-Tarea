@@ -1,10 +1,22 @@
 import { Component } from '@angular/core';
-import { DogViewerComponent } from './components/dog-viewer/dog-viewer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [DogViewerComponent],
-  template: '<app-dog-viewer></app-dog-viewer>'
+  imports: [NavbarComponent, RouterOutlet],
+  template: `
+    <app-navbar></app-navbar>
+    <main class="container">
+      <router-outlet></router-outlet>
+    </main>
+  `,
+  styles: [`
+    .container {
+      padding: 24px;
+      font-family: 'Poppins', sans-serif;
+    }
+  `]
 })
 export class AppComponent {}

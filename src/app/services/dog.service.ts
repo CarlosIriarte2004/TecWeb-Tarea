@@ -20,7 +20,8 @@ export class DogService {
   }
 
   getBreedImage(breed: string): Observable<any> {
-    return this.http.get(`https://dog.ceo/api/breed/${breed}/images/random`);
+    return this.http.get<{ message: string }>('https://dog.ceo/api/breeds/image/random')
+
   }
 
 }

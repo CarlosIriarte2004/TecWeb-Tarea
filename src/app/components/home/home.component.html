@@ -1,0 +1,11 @@
+<section class="home">
+  <div class="home-content">
+    <h1>🐶 Bienvenido a <span class="brand">DogApp</span></h1>
+    <p>Explora fotos aleatorias y por raza de tus perros favoritos.</p>
+    <a routerLink="/ver" class="explore-button">¡Comenzar ahora!</a>
+  </div>
+
+  <div class="home-image">
+    <img *ngIf="dogImage()" [src]="dogImage()" alt="Perro feliz" />
+  </div>
+</section>
