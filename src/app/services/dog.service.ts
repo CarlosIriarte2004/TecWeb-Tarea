@@ -14,4 +14,13 @@ export class DogService {
   getRandomDog(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
+  getAllBreeds(): Observable<any> {
+    return this.http.get('https://dog.ceo/api/breeds/list/all');
+  }
+
+  getBreedImage(breed: string): Observable<any> {
+    return this.http.get(`https://dog.ceo/api/breed/${breed}/images/random`);
+  }
+
 }

@@ -1,8 +1,17 @@
 <div class="card">
   <h2>Imagen aleatoria de perro</h2>
 
-  <!-- <div *ngIf="loading()" class="loading">Cargando imagen...</div> -->
+  <select [(ngModel)]="selectedBreed" (change)="loadDog()">
+    <option value="">Todas las razas</option>
+    <option *ngFor="let breed of breeds()" [value]="breed">{{ breed }}</option>
+  </select>
 
   <img *ngIf="!loading()" [src]="dogImage()" alt="Perro" class="dog-img" />
   <button (click)="loadDog()" [disabled]="loading()">Cambiar perro</button>
+  <button (click)="addFavorite(dogImage())">Guardar favorito</button>
+</div>
+
+<h3>Favoritos</h3>
+<div class="favorites">
+  <img *ngFor="let fav of favorites()" [src]="fav" width="150" />
 </div>
