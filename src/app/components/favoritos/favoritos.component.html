@@ -1,12 +1,12 @@
 <section class="favoritos">
-  <h2>🐾 Mis Perros Favoritos</h2>
+  <h2>Mis Perros Favoritos</h2>
 
   <div class="favorites-grid" *ngIf="favorites().length > 0; else noFavs">
     <img *ngFor="let fav of favorites()" [src]="fav" alt="Perro favorito" />
   </div>
 
   <button class="clear-btn" *ngIf="favorites().length" (click)="clearFavorites()">
-    🗑 Vaciar favoritos
+  Vaciar favoritos
   </button>
 
   <ng-template #noFavs>
