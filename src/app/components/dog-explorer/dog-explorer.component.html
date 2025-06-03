@@ -1,5 +1,5 @@
 <section class="explorer">
-  <h2>🐶 Explorar razas de perros</h2>
+  <h2>Explorar razas de perros</h2>
 
   <label for="breed">Raza:</label>
   <select id="breed" [(ngModel)]="selectedBreed" (change)="onBreedChange()">
@@ -14,8 +14,8 @@
   </select>
 
   <div class="buttons">
-    <button (click)="loadImage()">🎲 Ver Imagen Aleatoria</button>
-    <button (click)="irAGaleria()" [disabled]="!selectedBreed()">🖼 Ver Galería</button>
+    <button (click)="loadImage()">Ver Imagen Aleatoria</button>
+    <button (click)="irAGaleria()" [disabled]="!selectedBreed()">Ver Galería</button>
   </div>
 
   <div class="preview" *ngIf="dogImage()">

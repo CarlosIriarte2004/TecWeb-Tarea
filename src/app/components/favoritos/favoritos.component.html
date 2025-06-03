@@ -1,5 +1,5 @@
 <section class="favoritos">
-  <h2>❤️ Mis Perros Favoritos</h2>
+  <h2>Mis Perros Favoritos</h2>
 
   <div *ngIf="favorites().length > 0; else noFavorites" class="grid">
     <div class="card" *ngFor="let fav of favorites()">
@@ -9,10 +9,10 @@
   </div>
 
   <button class="clear-all" *ngIf="favorites().length" (click)="clearFavorites()">
-    🗑 Vaciar todos los favoritos
+    Vaciar todos los favoritos
   </button>
 
   <ng-template #noFavorites>
-    <p class="empty">Aún no tienes favoritos 😢</p>
+    <p class="empty">Aún no tienes favoritos</p>
   </ng-template>
 </section>

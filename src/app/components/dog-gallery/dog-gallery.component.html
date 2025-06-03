@@ -1,5 +1,5 @@
 <section class="gallery">
-  <h2>🖼 Galería de {{ sub ? sub + ' ' + breed : breed }}</h2>
+  <h2>Galería de {{ sub ? sub + ' ' + breed : breed }}</h2>
 
   <div *ngIf="loading()" class="loading">Cargando imágenes...</div>
 
@@ -7,5 +7,5 @@
     <img *ngFor="let img of images()" [src]="img" alt="Foto de perro" />
   </div>
 
-  <p *ngIf="!loading() && !images().length">No se encontraron imágenes 😢</p>
+  <p *ngIf="!loading() && !images().length">No se encontraron imágenes </p>
 </section>
