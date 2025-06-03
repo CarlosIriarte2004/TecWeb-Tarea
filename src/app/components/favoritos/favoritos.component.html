@@ -1,15 +1,18 @@
 <section class="favoritos">
-  <h2>Mis Perros Favoritos</h2>
+  <h2>❤️ Mis Perros Favoritos</h2>
 
-  <div class="favorites-grid" *ngIf="favorites().length > 0; else noFavs">
-    <img *ngFor="let fav of favorites()" [src]="fav" alt="Perro favorito" />
+  <div *ngIf="favorites().length > 0; else noFavorites" class="grid">
+    <div class="card" *ngFor="let fav of favorites()">
+      <img [src]="fav" alt="Perro favorito" />
+      <button class="remove-btn" (click)="removeFavorite(fav)">✖</button>
+    </div>
   </div>
 
-  <button class="clear-btn" *ngIf="favorites().length" (click)="clearFavorites()">
-  Vaciar favoritos
+  <button class="clear-all" *ngIf="favorites().length" (click)="clearFavorites()">
+    🗑 Vaciar todos los favoritos
   </button>
 
-  <ng-template #noFavs>
-    <p class="empty-message">Aún no has guardado ningún perro 😢</p>
+  <ng-template #noFavorites>
+    <p class="empty">Aún no tienes favoritos 😢</p>
   </ng-template>
 </section>

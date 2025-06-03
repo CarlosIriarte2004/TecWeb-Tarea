@@ -1,0 +1,32 @@
+<section class="explorer">
+  <h2>🐶 Explorar razas de perros</h2>
+
+  <label for="breed">Raza:</label>
+  <select id="breed" [(ngModel)]="selectedBreed" (change)="onBreedChange()">
+    <option value="">-- Selecciona una raza --</option>
+    <option *ngFor="let breed of breeds()" [value]="breed">{{ breed }}</option>
+  </select>
+
+  <label *ngIf="subBreeds().length" for="sub">Subraza:</label>
+  <select *ngIf="subBreeds().length" id="sub" [(ngModel)]="selectedSubBreed">
+    <option value="">-- Todas las subrazas --</option>
+    <option *ngFor="let sub of subBreeds()" [value]="sub">{{ sub }}</option>
+  </select>
+
+  <div class="buttons">
+    <button (click)="loadImage()">🎲 Ver Imagen Aleatoria</button>
+    <button (click)="irAGaleria()" [disabled]="!selectedBreed()">🖼 Ver Galería</button>
+  </div>
+
+  <div class="preview" *ngIf="dogImage()">
+    <img [src]="dogImage()" alt="Imagen de perro" />
+  </div>
+
+  <div *ngIf="history().length" class="historial">
+  <h3>🕘 Historial de búsquedas</h3>
+  <ul>
+    <li *ngFor="let item of history()">{{ item }}</li>
+  </ul>
+</div>
+
+</section>
