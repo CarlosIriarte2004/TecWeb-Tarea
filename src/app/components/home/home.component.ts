@@ -18,7 +18,7 @@ export class HomeComponent {
   }
 
   loadDogImage() {
-    this.http.get<{ message: string }>('https://dog.ceo/api/breeds/image/random')
+    this.http.get<{ message: string }>('http://localhost:3000/api/breeds/image/random')
       .subscribe({
         next: res => {
           this.dogImage.set(res.message);
