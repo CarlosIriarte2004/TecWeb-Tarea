@@ -6,6 +6,7 @@
   </div>
 
   <div class="home-image">
-    <img *ngIf="dogImage()" [src]="dogImage()" alt="Perro feliz" />
+    <div *ngIf="loading()" class="spinner"></div>
+    <img *ngIf="!loading() && dogImage()" [src]="dogImage()" alt="Perro feliz" />
   </div>
 </section>

@@ -2,13 +2,13 @@
   <h2>Explorar razas de perros</h2>
 
   <label for="breed">Raza:</label>
-  <select id="breed" [(ngModel)]="selectedBreed" (change)="onBreedChange()">
+  <select id="breed" [ngModel]="selectedBreed()" (ngModelChange)="selectedBreed.set($event); onBreedChange()">
     <option value="">-- Selecciona una raza --</option>
     <option *ngFor="let breed of breeds()" [value]="breed">{{ breed }}</option>
   </select>
 
   <label *ngIf="subBreeds().length" for="sub">Subraza:</label>
-  <select *ngIf="subBreeds().length" id="sub" [(ngModel)]="selectedSubBreed">
+  <select *ngIf="subBreeds().length" id="sub" [ngModel]="selectedSubBreed()" (ngModelChange)="selectedSubBreed.set($event)">
     <option value="">-- Todas las subrazas --</option>
     <option *ngFor="let sub of subBreeds()" [value]="sub">{{ sub }}</option>
   </select>
@@ -23,10 +23,9 @@
   </div>
 
   <div *ngIf="history().length" class="historial">
-  <h3>🕘 Historial de búsquedas</h3>
-  <ul>
-    <li *ngFor="let item of history()">{{ item }}</li>
-  </ul>
-</div>
-
+    <h3>🕘 Historial de búsquedas</h3>
+    <ul>
+      <li *ngFor="let item of history()">{{ item }}</li>
+    </ul>
+  </div>
 </section>

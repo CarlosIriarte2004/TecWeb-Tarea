@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DogService } from '../../services/dog.service';
 import { RouterModule } from '@angular/router';
+import { DogService } from '../../services/dog.service';
 import { DogHistoryService } from '../../services/dog-history.service';
 
 @Component({
@@ -30,10 +30,8 @@ export class DogExplorerComponent {
 
   loadBreeds() {
     this.dogService.getAllBreeds().subscribe({
-      next: res => {
-        const list = Object.keys(res.message);
-        this.breeds.set(list);
-      }
+      next: res => this.breeds.set(Object.keys(res.message)),
+      error: err => console.error('Error cargando razas', err)
     });
   }
 
@@ -42,9 +40,8 @@ export class DogExplorerComponent {
     this.selectedSubBreed.set('');
     if (breed) {
       this.dogService.getSubBreeds(breed).subscribe({
-        next: res => {
-          this.subBreeds.set(res.message);
-        }
+        next: res => this.subBreeds.set(res.message),
+        error: err => console.error('Error cargando subrazas', err)
       });
     } else {
       this.subBreeds.set([]);
@@ -55,11 +52,14 @@ export class DogExplorerComponent {
     const breed = this.selectedBreed();
     const sub = this.selectedSubBreed();
 
-    if (breed && sub) {
-      this.dogService.getSubBreedImage(breed, sub).subscribe(res => this.dogImage.set(res.message));
-    } else if (breed) {
-      this.dogService.getBreedImage(breed).subscribe(res => this.dogImage.set(res.message));
-    }
+    const obs = sub
+      ? this.dogService.getSubBreedImage(breed, sub)
+      : this.dogService.getBreedImage(breed);
+
+    obs.subscribe({
+      next: res => this.dogImage.set(res.message),
+      error: err => console.error('Error cargando imagen', err)
+    });
 
     this.actualizarHistorial();
   }
@@ -67,14 +67,10 @@ export class DogExplorerComponent {
   irAGaleria() {
     const breed = this.selectedBreed();
     const sub = this.selectedSubBreed();
-
     this.actualizarHistorial();
 
-    if (breed && sub) {
-      window.location.href = `/galeria?breed=${breed}&sub=${sub}`;
-    } else if (breed) {
-      window.location.href = `/galeria?breed=${breed}`;
-    }
+    const params = new URLSearchParams({ breed, ...(sub && { sub }) });
+    window.location.href = `/galeria?${params}`;
   }
 
   private actualizarHistorial() {

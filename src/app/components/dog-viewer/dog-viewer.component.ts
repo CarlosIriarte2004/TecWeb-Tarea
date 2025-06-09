@@ -33,12 +33,12 @@ export class DogViewerComponent {
 
     request.subscribe({
       next: res => {
-        console.log('Dog image URL:', res.message);
         this.dogImage.set(res.message);
         this.loading.set(false);
+        console.log('✅ Imagen cargada:', res.message);
       },
       error: err => {
-        console.error('Error:', err);
+        console.error('❌ Error al cargar imagen:', err);
         this.loading.set(false);
       }
     });
@@ -47,10 +47,9 @@ export class DogViewerComponent {
   loadBreeds() {
     this.dogService.getAllBreeds().subscribe({
       next: res => {
-        const keys = Object.keys(res.message);
-        this.breeds.set(keys);
+        this.breeds.set(Object.keys(res.message));
       },
-      error: err => console.error('Error loading breeds:', err)
+      error: err => console.error('❌ Error cargando razas:', err)
     });
   }
 

@@ -23,19 +23,23 @@ export class DogCompareComponent {
 
   loadBreeds() {
     this.dogService.getAllBreeds().subscribe({
-      next: res => {
-        const list = Object.keys(res.message);
-        this.breeds.set(list);
-      }
+      next: res => this.breeds.set(Object.keys(res.message)),
+      error: err => console.error('Error cargando razas:', err)
     });
   }
 
   loadImages() {
     if (this.breed1()) {
-      this.dogService.getBreedImage(this.breed1()).subscribe(res => this.image1.set(res.message));
+      this.dogService.getBreedImage(this.breed1()).subscribe({
+        next: res => this.image1.set(res.message),
+        error: err => console.error('Error imagen 1:', err)
+      });
     }
     if (this.breed2()) {
-      this.dogService.getBreedImage(this.breed2()).subscribe(res => this.image2.set(res.message));
+      this.dogService.getBreedImage(this.breed2()).subscribe({
+        next: res => this.image2.set(res.message),
+        error: err => console.error('Error imagen 2:', err)
+      });
     }
   }
 }

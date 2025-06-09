@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DogService {
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'https://api-dog-dfi1.onrender.com/api';
+
 
   constructor(private http: HttpClient) {}
 

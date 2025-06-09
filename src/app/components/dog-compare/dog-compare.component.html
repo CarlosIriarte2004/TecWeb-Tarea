@@ -1,18 +1,18 @@
 <section class="compare">
-  <h2>Comparador de razas</h2>
+  <h2>Comparador de Razas</h2>
 
   <div class="selectors">
     <div>
-      <label>Raza 1:</label>
-      <select [(ngModel)]="breed1">
+      <label for="breed1">Raza 1:</label>
+      <select id="breed1" [ngModel]="breed1()" (ngModelChange)="breed1.set($event)">
         <option value="">-- Selecciona --</option>
         <option *ngFor="let breed of breeds()" [value]="breed">{{ breed }}</option>
       </select>
     </div>
 
     <div>
-      <label>Raza 2:</label>
-      <select [(ngModel)]="breed2">
+      <label for="breed2">Raza 2:</label>
+      <select id="breed2" [ngModel]="breed2()" (ngModelChange)="breed2.set($event)">
         <option value="">-- Selecciona --</option>
         <option *ngFor="let breed of breeds()" [value]="breed">{{ breed }}</option>
       </select>
