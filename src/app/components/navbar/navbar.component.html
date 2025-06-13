@@ -1,10 +1,16 @@
 <nav class="navbar">
   <div class="logo">🐾 DogApp</div>
-  <ul class="nav-links">
-    <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
-    <li><a routerLink="/ver" routerLinkActive="active">Ver</a></li>
-    <li><a routerLink="/explorar" routerLinkActive="active">Explorar</a></li>
-    <li><a routerLink="/favoritos" routerLinkActive="active">Favoritos</a></li>
-    <li><a routerLink="/comparar" routerLinkActive="active">Comparar</a></li>
-  </ul>
+  
+<button class="menu-toggle" (click)="toggleMenu(); $event.stopPropagation()">☰</button>
+
+
+<ul class="nav-links" [class.open]="menuAbierto" (click)="$event.stopPropagation()">
+  <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
+  <li><a routerLink="/ver" routerLinkActive="active">Ver</a></li>
+  <li><a routerLink="/explorar" routerLinkActive="active">Explorar</a></li>
+  <li><a routerLink="/favoritos" routerLinkActive="active">Favoritos</a></li>
+  <li><a routerLink="/comparar" routerLinkActive="active">Comparar</a></li>
+</ul>
+
+
 </nav>
