@@ -15,12 +15,17 @@
   font-size: 1.5rem;
 }
 
+.logo-link {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .menu-toggle {
   background: none;
   border: none;
   color: white;
   font-size: 1.8rem;
-  cursor: pointer;
   display: none;
 
   @media (max-width: 768px) {
@@ -35,6 +40,7 @@
   margin: 0;
   padding: 0;
   transition: all 0.3s ease-in-out;
+  
 
   a {
     color: white;
@@ -45,6 +51,10 @@
     &.active {
       text-decoration: underline;
     }
+  }
+
+    li {
+    cursor: pointer; 
   }
 
 @media (max-width: 768px) {
@@ -69,4 +79,10 @@
 }
 
 
+}
+
+.navbar a,
+.navbar li,
+.navbar .logo {
+  cursor: pointer;
 }
